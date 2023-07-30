@@ -36,6 +36,7 @@
         ├── pointer.go # chứa các hàm kiểm tra pointer
     ├── main.go # file chạy chính
     ├── go.mod # file quản lý các package
+    ├── .gitignore # file quản lý các file không cần push lên git
 ```
 
 ## package used
