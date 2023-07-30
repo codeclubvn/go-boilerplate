@@ -1,5 +1,5 @@
 # Golang boiler-plate
-- Mục đích của source code này là để giúp các bạn có thể nhanh chóng tìm hiểu về golang và có thể viết được một ứng dụng backend đơn giản.
+- Nhằm giúp các bạn có thể nhanh chóng tìm hiểu về golang và có thể viết được một ứng dụng backend đơn giản.
 - Source code này gồm 3 phần:
     - geometry: bài tập về hình học để hiểu cơ bản về golang
     - backend-basic: viết server backend đơn giản trong một file gồm các API và connect database
