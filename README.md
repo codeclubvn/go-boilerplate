@@ -29,11 +29,10 @@
         ├── env # chứa các biến môi trường
     ├── middleware # các hàm trung gian, xử lý yêu cầu trước khi nó tới handler
     ├── model # lưu các struct
-    ├── util # chứa các file utils
+    ├── util # chứa các hàm tiện ích
         ├── constant.go # chứa các constant
         ├── error.go # chứa các error
         ├── response.go # chứa các response
-        |── util.go # chứa các hàm tiện ích
         ├── pointer.go # chứa các hàm kiểm tra pointer
     ├── main.go # file chạy chính
     ├── go.mod # file quản lý các package
