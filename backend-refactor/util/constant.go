@@ -1,3 +1,3 @@
-package utils
+package util
 
 const ADMIN_ROLE = "admin"
