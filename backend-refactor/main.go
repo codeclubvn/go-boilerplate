@@ -2,10 +2,13 @@ package main
 
 import (
 	"boilerplate/backend-refactor/config"
-	"boilerplate/backend-refactor/router"
+	"boilerplate/backend-refactor/route"
 )
 
 func main() {
 	config.SetEnv()
-	router.NewService()
+	app := route.NewService()
+	if err := app.Start(); err != nil {
+		panic(err)
+	}
 }

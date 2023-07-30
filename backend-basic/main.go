@@ -42,7 +42,7 @@ func main() {
 	db.AutoMigrate(&User{})
 
 	//------------------------------API--------------------
-	// Khởi tạo router sử dụng Gin
+	// Khởi tạo route sử dụng Gin
 	router := gin.Default()
 
 	// Định nghĩa route GET "/hello" để trả về "Hello, World!"

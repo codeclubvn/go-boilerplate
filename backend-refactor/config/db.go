@@ -8,10 +8,19 @@ import (
 	"log"
 )
 
-func (a *App) GetDB() *gorm.DB {
+var dbDefault *gorm.DB
 
-	// Lấy thông tin cấu hình
-	cfg := GetEnv()
+// sử dụng singleton pattern để tạo một connection duy nhất đến database
+// khi ứng dụng lớn hơn thì không nên sử dụng singleton pattern
+// thay vào đó nên sử dụng connection pool
+func (a *App) GetDB() *gorm.DB {
+	if dbDefault == nil {
+		return a.initDB()
+	}
+	return dbDefault
+}
+
+func (a *App) initDB() *gorm.DB {
 	// Tạo chuỗi kết nối đến PostgreSQL
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s", cfg.DBHost, cfg.DBUser, cfg.DBPassword, cfg.DBName, cfg.DBPort)
 

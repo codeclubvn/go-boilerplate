@@ -1,13 +1,19 @@
 package config
 
-import "gorm.io/gorm"
+import (
+	"github.com/gin-gonic/gin"
+)
 
 type App struct {
-	db *gorm.DB
+	Router *gin.Engine
 }
 
-func NewApp(db *gorm.DB) *App {
+func NewApp() *App {
 	return &App{
-		db: db,
+		Router: gin.Default(),
 	}
+}
+
+func (a *App) Start() error {
+	return a.Router.Run(":" + cfg.Port)
 }

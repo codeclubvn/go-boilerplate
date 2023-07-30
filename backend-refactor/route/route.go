@@ -1,4 +1,4 @@
-package router
+package route
 
 import (
 	"boilerplate/backend-refactor/config"
@@ -6,29 +6,25 @@ import (
 	"boilerplate/backend-refactor/middleware"
 	repo2 "boilerplate/backend-refactor/repo"
 	"boilerplate/backend-refactor/service"
-	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
 )
 
 type Service struct {
-	db     *config.App
-	router *gin.Engine
+	*config.App
 }
 
 func NewService() *Service {
-	db := &gorm.DB{}
 	s := Service{
-		db:     config.NewApp(db),
-		router: gin.Default(),
+		config.NewApp(),
 	}
 
-	repo := repo2.NewRepo(s.db.GetDB())
+	db := s.GetDB()
+	repo := repo2.NewRepo(db)
 
 	userService := service.NewUser(repo)
 	user := handler.NewUser(userService)
-	migrate := handler.NewMigration(s.db.GetDB())
+	migrate := handler.NewMigration(db)
 
-	router := s.router
+	router := s.Router
 	v1 := router.Group("/v1")
 
 	// user
@@ -36,7 +32,5 @@ func NewService() *Service {
 
 	// migration
 	router.POST("/migrate", middleware.CheckAdmin(), migrate.Migrate)
-
-	router.Run(":8000")
 	return &s
 }
